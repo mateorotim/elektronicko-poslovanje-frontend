@@ -32,23 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   updateUrl(index){
-    if(this.cameras[index].errors == 1){
-      this.cameras[index].ip = '../../assets/cameraError.png';
-    } else {
-      let ip = this.cameras[index].ip;
-
-      let pIndex = ip.indexOf("://");
-      let prefix = ip.substr(0, pIndex+3);
-
-      ip = ip.slice(pIndex+3, ip.length);
-
-      let atIndex = ip.indexOf("@");
-      ip = ip.slice(atIndex+1, ip.length);
-      ip = prefix+ip;
-      ip = ip.replace(/\s/g, '');
-      this.cameras[index].ip = ip;
-      this.cameras[index].errors = 1;
-    }
+    this.cameras[index].ip = '../../assets/cameraError.png';
   }
 
   ngOnInit() {

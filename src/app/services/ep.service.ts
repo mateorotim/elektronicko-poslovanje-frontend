@@ -15,7 +15,7 @@ export class EpService {
     headers.append('password', password);
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.get('http://eposlovanje.ddns.net:3000/api/v1/login', options)
+    return this.http.get('/api/v1/login', options)
       .map(response => {
         let status = response.json();
         return (status.success === true ? true : false);

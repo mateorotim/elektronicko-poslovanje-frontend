@@ -2,34 +2,30 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">Add Relay</div>
 		<div class="list-group">
-			<li class="list-group-item">
+			<div class="list-group-item">
 				<form #form="ngForm" (ngSubmit)="addRelay(form)">
 					<div class="row">
-						<div class="col-md-8 col-sm-8 col-xs-8">
-							<div class="form-group">
-								<label for="inputName">Name</label>
-								<input type="text" class="form-control" id="inputName" required="required" name="name" ngModel>
-							</div>
+						<div class="form-group col-xs-8 col-sm-8 col-md-8">
+							<label for="inputName">Name</label>
+							<input type="text" class="form-control" id="inputName" required="required" name="name" ngModel>
 						</div>
-						<div class="col-md-4 col-sm-4 col-xs-4">
-							<div class="form-group">
-								<label for="inputPin">Pin</label>
-								<input type="number" class="form-control" id="inputPin" required="required" name="pin" ngModel>
-							</div>
+						<div class="form-group col-xs-4 col-sm-4 col-md-4">
+							<label for="inputPin">Pin</label>
+							<input type="number" class="form-control" id="inputPin" required="required" name="pin" ngModel>
 						</div>
-						<div *ngIf="relayAddError" class="col-md-12">
-							<div class="form-group">
-								<label class="label label-danger">{{ relayAddMessage }}</label>
-							</div>
+					</div>
+					<div *ngIf="relayAddError" class="row">
+						<div class="form-group col-md-12">
+							<label class="label label-danger">{{ relayAddMessage }}</label>
 						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<button [disabled]="!form.valid" class="btn btn-primary fullbtn">Add</button>
-							</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<button [disabled]="!form.valid" class="btn btn-primary fullbtn">Add</button>
 						</div>
 					</div>
 				</form>
-			</li>
+			</div>
 		</div>
 	</div>
 	<div class="panel panel-default">
@@ -51,46 +47,40 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">Add Camera</div>
 		<div class="list-group">
-			<li class="list-group-item">
+			<div class="list-group-item">
 				<form #cameraForm="ngForm" (ngSubmit)="addCamera(cameraForm)">
 					<div class="row">
-						<div class="col-md-6 col-sm-6 col-xs-6">
-							<div class="form-group">
-								<label for="inputCameraName">Name</label>
-								<input type="text" class="form-control" id="inputCameraName" required="required" name="cameraName" ngModel>
-							</div>
+						<div class="form-group col-md-6 col-sm-6 col-xs-6">
+							<label for="inputCameraName">Name</label>
+							<input type="text" class="form-control" id="inputCameraName" required="required" name="cameraName" ngModel>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6">
-							<div class="form-group">
-								<label for="inputCameraIp">IP</label>
-								<input type="text" class="form-control" id="inputCameraIp" required="required" name="cameraIp" ngModel>
-							</div>
+						<div class="form-group col-md-6 col-sm-6 col-xs-6">
+							<label for="inputCameraIp">IP</label>
+							<input type="text" class="form-control" id="inputCameraIp" required="required" name="cameraIp" ngModel>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6">
-							<div class="form-group">
-								<label for="inputUsername">Username</label>
-								<input type="text" class="form-control" id="inputUsername" required="required" name="username" ngModel>
-							</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 col-sm-6 col-xs-6">
+							<label for="inputUsername">Username</label>
+							<input type="text" class="form-control" id="inputUsername" name="username" ngModel>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6">
-							<div class="form-group">
-								<label for="inputPassword">Password</label>
-								<input type="password" class="form-control" id="inputPassword" required="required" name="password" ngModel>
-							</div>
+						<div class="form-group col-md-6 col-sm-6 col-xs-6">
+							<label for="inputPassword">Password</label>
+							<input type="password" class="form-control" id="inputPassword" name="password" ngModel>
 						</div>
-						<div *ngIf="cameraAddError" class="col-md-12">
-							<div class="form-group">
-								<label class="label label-danger">{{ cameraAddMessage }}</label>
-							</div>
+					</div>
+					<div *ngIf="cameraAddError" class="row">
+						<div class="form-group col-md-12">
+							<label class="label label-danger">{{ cameraAddMessage }}</label>
 						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<button [disabled]="!cameraForm.valid" class="btn btn-primary fullbtn">Add</button>
-							</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<button [disabled]="!cameraForm.valid" class="btn btn-primary fullbtn">Add</button>
 						</div>
 					</div>
 				</form>
-			</li>
+			</div>
 		</div>
 	</div>
 	<div class="panel panel-default" *ngIf="cameras.length > 0">
@@ -112,34 +102,30 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">Add User</div>
 		<div class="list-group">
-			<li class="list-group-item">
+			<div class="list-group-item">
 				<form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
 					<div class="row">
-						<div class="col-md-6 col-sm-6 col-xs-6">
-							<div class="form-group">
-								<label for="inputUsername">Username</label>
-								<input type="text" class="form-control" id="inputUsername" required="required" name="username" ngModel>
-							</div>
+						<div class="form-group col-md-6 col-sm-6 col-xs-6">
+							<label for="inputUsername">Username</label>
+							<input type="text" class="form-control" id="inputUsername" required="required" name="username" ngModel>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6">
-							<div class="form-group">
-								<label for="inputPassword">Password</label>
-								<input type="password" class="form-control" id="inputPassword" required="required" name="password" ngModel>
-							</div>
+						<div class="form-group col-md-6 col-sm-6 col-xs-6">
+							<label for="inputPassword">Password</label>
+							<input type="password" class="form-control" id="inputPassword" required="required" name="password" ngModel>
 						</div>
-						<div *ngIf="userAddError" class="col-md-12">
-							<div class="form-group">
-								<label class="label label-danger">{{ userAddMessage }}</label>
-							</div>
+					</div>
+					<div *ngIf="userAddError" class="row">
+						<div class="form-group col-md-12">
+							<label class="label label-danger">{{ userAddMessage }}</label>
 						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<button [disabled]="!userForm.valid" class="btn btn-primary fullbtn">Add</button>
-							</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<button [disabled]="!userForm.valid" class="btn btn-primary fullbtn">Add</button>
 						</div>
 					</div>
 				</form>
-			</li>
+			</div>
 		</div>
 	</div>
 	<div class="panel panel-default">
@@ -148,7 +134,6 @@
 
 		<!-- List group -->
 		<ul class="list-group">
-
 			<li class="list-group-item" *ngFor="let user of users; let i = index;">
 				<span *ngIf="user.edit">New password for </span> {{ user.username }}
 				<div class="row" *ngIf="user.edit">
@@ -163,7 +148,6 @@
 				<button (click)="editUser(i, true)" *ngIf="!user.edit" class="btn btn-xs btn-warning pull-right">Change password</button>
 				<button (click)="removeUser(i)" *ngIf="user.username != 'admin' && !user.edit" class="btn btn-xs btn-danger pull-right">Remove</button>
 			</li>
-
 		</ul>
 	</div>
 </div>

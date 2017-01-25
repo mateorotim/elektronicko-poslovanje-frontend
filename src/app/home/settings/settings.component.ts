@@ -77,13 +77,17 @@ export class SettingsComponent implements OnInit {
     let name = cameraForm.value.cameraName;
     let username = cameraForm.value.username;
     let password = cameraForm.value.password;
-    let ip = cameraForm.value.cameraIp;
-    let pIndex = ip.indexOf("://");
-    let prefix = ip.substr(0, pIndex+3);
-    ip = ip.slice(pIndex+3, ip.length);
-    ip = prefix+username+':'+password+'@'+ip;
-    ip = ip.replace(/\s/g, '');
-
+    let ip = '';
+    if (username.length < 1 || password.length < 1) {
+      ip = cameraForm.value.cameraIp;
+    } else {
+      ip = cameraForm.value.cameraIp;
+      let pIndex = ip.indexOf('://');
+      let prefix = ip.substr(0, pIndex + 3);
+      ip = ip.slice(pIndex + 3, ip.length);
+      ip = prefix + username + ':' + password + '@' + ip;
+      ip = ip.replace(/\s/g, '');
+    }
     let newCamera = {
       name: name,
       ip: ip,
@@ -112,8 +116,8 @@ export class SettingsComponent implements OnInit {
     this.epService.removeRelay(relay).subscribe(
       response => {
         console.log('success', response);
-        if(response.success == true){
-          this.relays.splice(index,1);
+        if (response.success == true) {
+          this.relays.splice(index, 1);
         }
       },
       err => {
@@ -127,8 +131,8 @@ export class SettingsComponent implements OnInit {
     this.epService.removeUser(user).subscribe(
       response => {
         console.log('success', response);
-        if(response.removed == true){
-          this.users.splice(index,1);
+        if (response.removed == true) {
+          this.users.splice(index, 1);
         }
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (user.username == currentUser.username) {
@@ -147,8 +151,8 @@ export class SettingsComponent implements OnInit {
     this.epService.removeCamera(camera).subscribe(
       response => {
         console.log('success', response);
-        if(response.removed == true){
-          this.cameras.splice(index,1);
+        if (response.removed == true) {
+          this.cameras.splice(index, 1);
         }
       },
       err => {
