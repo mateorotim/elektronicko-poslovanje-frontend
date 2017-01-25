@@ -1,0 +1,169 @@
+<div class="col-md-4">
+	<div class="panel panel-default">
+		<div class="panel-heading">Add Relay</div>
+		<div class="list-group">
+			<li class="list-group-item">
+				<form #form="ngForm" (ngSubmit)="addRelay(form)">
+					<div class="row">
+						<div class="col-md-8 col-sm-8 col-xs-8">
+							<div class="form-group">
+								<label for="inputName">Name</label>
+								<input type="text" class="form-control" id="inputName" required="required" name="name" ngModel>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-4">
+							<div class="form-group">
+								<label for="inputPin">Pin</label>
+								<input type="number" class="form-control" id="inputPin" required="required" name="pin" ngModel>
+							</div>
+						</div>
+						<div *ngIf="relayAddError" class="col-md-12">
+							<div class="form-group">
+								<label class="label label-danger">{{ relayAddMessage }}</label>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<button [disabled]="!form.valid" class="btn btn-primary fullbtn">Add</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</li>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Relays</div>
+
+		<!-- List group -->
+		<ul class="list-group">
+
+			<li class="list-group-item" *ngFor="let relay of relays; let i = index;">
+				{{ relay.name }}
+				<button (click)="removeRelay(i)" class="btn btn-xs btn-danger pull-right">Remove</button>
+			</li>
+
+		</ul>
+	</div>
+</div>
+<div class="col-md-4">
+	<div class="panel panel-default">
+		<div class="panel-heading">Add Camera</div>
+		<div class="list-group">
+			<li class="list-group-item">
+				<form #cameraForm="ngForm" (ngSubmit)="addCamera(cameraForm)">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group">
+								<label for="inputCameraName">Name</label>
+								<input type="text" class="form-control" id="inputCameraName" required="required" name="cameraName" ngModel>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group">
+								<label for="inputCameraIp">IP</label>
+								<input type="text" class="form-control" id="inputCameraIp" required="required" name="cameraIp" ngModel>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group">
+								<label for="inputUsername">Username</label>
+								<input type="text" class="form-control" id="inputUsername" required="required" name="username" ngModel>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group">
+								<label for="inputPassword">Password</label>
+								<input type="password" class="form-control" id="inputPassword" required="required" name="password" ngModel>
+							</div>
+						</div>
+						<div *ngIf="cameraAddError" class="col-md-12">
+							<div class="form-group">
+								<label class="label label-danger">{{ cameraAddMessage }}</label>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<button [disabled]="!cameraForm.valid" class="btn btn-primary fullbtn">Add</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</li>
+		</div>
+	</div>
+	<div class="panel panel-default" *ngIf="cameras.length > 0">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Cameras</div>
+
+		<!-- List group -->
+		<ul class="list-group">
+
+			<li class="list-group-item" *ngFor="let camera of cameras; let i = index;">
+				{{ camera.name }}
+				<button (click)="removeCamera(i)" class="btn btn-xs btn-danger pull-right">Remove</button>
+			</li>
+
+		</ul>
+	</div>
+</div>
+<div class="col-md-4">
+	<div class="panel panel-default">
+		<div class="panel-heading">Add User</div>
+		<div class="list-group">
+			<li class="list-group-item">
+				<form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group">
+								<label for="inputUsername">Username</label>
+								<input type="text" class="form-control" id="inputUsername" required="required" name="username" ngModel>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group">
+								<label for="inputPassword">Password</label>
+								<input type="password" class="form-control" id="inputPassword" required="required" name="password" ngModel>
+							</div>
+						</div>
+						<div *ngIf="userAddError" class="col-md-12">
+							<div class="form-group">
+								<label class="label label-danger">{{ userAddMessage }}</label>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<button [disabled]="!userForm.valid" class="btn btn-primary fullbtn">Add</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</li>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Users</div>
+
+		<!-- List group -->
+		<ul class="list-group">
+
+			<li class="list-group-item" *ngFor="let user of users; let i = index;">
+				<span *ngIf="user.edit">New password for </span> {{ user.username }}
+				<div class="row" *ngIf="user.edit">
+					<div class="col-lg-7 col-md-6 col-sm-9 col-xs-7">
+						<input #pass type="password" class="form-control input-sm">
+					</div>
+					<div class="col-lg-5 col-md-6 col-sm-3 col-xs-5">
+						<button (click)="updateUser(i, pass.value)" class="btn btn-xs btn-primary">Change!</button>
+						<button (click)="editUser(i, false)" class="btn btn-xs btn-warning">Cancle</button>
+					</div>
+				</div>
+				<button (click)="editUser(i, true)" *ngIf="!user.edit" class="btn btn-xs btn-warning pull-right">Change password</button>
+				<button (click)="removeUser(i)" *ngIf="user.username != 'admin' && !user.edit" class="btn btn-xs btn-danger pull-right">Remove</button>
+			</li>
+
+		</ul>
+	</div>
+</div>

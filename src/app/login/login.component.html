@@ -1,0 +1,11 @@
+
+
+<form #form="ngForm" (ngSubmit)="login(form.value)">
+  <h1>ePoslovanje</h1>
+  <input placeholder="Username" type="text" id="Username" required="required" name="username" ngModel>
+  <input placeholder="Password" type="password" type="password" id="Password" required="required" name="password" ngModel>
+  <div *ngIf="loginFailed" class="label-danger wrong">
+        Wrong username or password!
+  </div>
+  <button>Login</button>
+</form> 

@@ -1,0 +1,28 @@
+<div class="col-md-6">
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Control</div>
+
+		<!-- List group -->
+		<ul class="list-group">
+
+			<li class="list-group-item" *ngFor="let relay of relays; let i = index;">
+				{{ relay.name }}
+				<div class="material-switch pull-right">
+					<input id="{{i}}" [name]="relay.name" type="checkbox" [checked]="relay.state" (change)="toggleRelay($event, i)" />
+					<label htmlFor="{{i}}" class="label-primary"></label>
+				</div>
+			</li>
+
+		</ul>
+	</div>
+</div>
+<div class="col-md-6">
+	<div *ngFor="let camera of cameras; let i = index;">
+		<div class="panel panel-default" *ngIf="cameras.length > 0">
+			<div class="panel-heading">{{camera.name}}</div>
+			<img style="border: 2px solid grey;" width="100%" height="auto" [src]="camera.ip" (error)="updateUrl(i)">
+		</div>
+	</div>
+
+</div>

@@ -4,17 +4,29 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { APP_ROUTES } from './routes';
+import { HomeComponent } from './home/home.component';
+import { EpService } from './services/ep.service';
+import { AuthguardService } from './services/authguard.service';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { SettingsComponent } from './home/settings/settings.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    DashboardComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    APP_ROUTES
   ],
-  providers: [],
+  providers: [EpService, AuthguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
